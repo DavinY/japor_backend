@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class User(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
     nama = models.CharField(max_length=255)
@@ -12,7 +13,7 @@ class User(models.Model):
 
 
 class Lapor(models.Model):
-    tanggel = models.DateTimeField()
+    tanggal = models.DateTimeField()
     judul = models.CharField(max_length=50)
     deskripsi = models.CharField(max_length=255)
     lokasi = models.CharField(max_length=255)

@@ -79,9 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'japor_app',
-        'USER':'root',
-        'PASSWORD':'',
-
+        'USER': 'root',
+        'PASSWORD': '',
     }
 }
 
