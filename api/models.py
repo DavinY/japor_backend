@@ -18,8 +18,9 @@ class Lapor(models.Model):
     deskripsi = models.CharField(max_length=255)
     lokasi = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
+    kategori = models.CharField(max_length=255)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-
     # Create / Insert / Add - POST
     # Retrieve /  Fetch - GET
     # Update / Edit - PUT
