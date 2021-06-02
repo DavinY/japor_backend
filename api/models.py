@@ -19,6 +19,7 @@ class Lapor(models.Model):
     lokasi = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
+    url_progress = models.CharField(max_length=255)
     kategori = models.CharField(max_length=255)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     # Create / Insert / Add - POST
