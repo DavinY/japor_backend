@@ -80,7 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'japor_app',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'trycatch',
+        'HOST': '34.101.125.33',
+        'PORT': '3306'
     }
 }
 
