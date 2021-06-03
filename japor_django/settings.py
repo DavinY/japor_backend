@@ -78,11 +78,10 @@ WSGI_APPLICATION = 'japor_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'japor_app',
+        'HOST': '/cloudsql/japor-application:asia-southeast2:japor-database',
         'USER': 'root',
         'PASSWORD': 'trycatch',
-        'HOST': '34.101.125.33',
-        'PORT': '3306'
+        'NAME': 'japor_app',
     }
 }
 
