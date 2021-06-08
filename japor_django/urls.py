@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .router import router
+from api.views import getCompare
+from api.views import getRecommendation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls)),
+    path('compare/', getCompare),
+    path('recommendation/', getRecommendation),
 ]
