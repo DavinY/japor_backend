@@ -3,24 +3,22 @@ from rest_framework.response import Response
 from . import models
 from . import serializers
 from django.http import JsonResponse
-
 import numpy as np
 import cv2
 import urllib.request
 from PIL import Image
-
 from keras_preprocessing import image
 from tensorflow import keras
 
 
 def compare(imgURL1, imgURL2):
-    urllib.request.urlretrieve(imgURL1, "img1.png")
-    urllib.request.urlretrieve(imgURL2, "img2.png")
+    localfile1, headers = urllib.request.urlretrieve(imgURL1)
+    localfile2, headers = urllib.request.urlretrieve(imgURL2)
 
     percentage_list = []
 
-    img1 = cv2.imread("img1.png", 4)
-    img2 = cv2.imread("img2.png", 4)
+    img1 = cv2.imread(localfile1, 4)
+    img2 = cv2.imread(localfile2, 4)
 
     sift = cv2.xfeatures2d.SIFT_create()
 
@@ -54,12 +52,12 @@ def compare(imgURL1, imgURL2):
 
 
 def getCompare(request):
-    url1 = "https://firebasestorage.googleapis.com/v0/b/ssrestaurant.appspot.com/o/images%2Fudang.jpg?alt=media&token=025e429d-f316-4801-924e-0b150eb9d039"
+    url1 = "https://firebasestorage.googleapis.com/v0/b/japor-45077.appspot.com/o/report-images%2Fc786a60a-0572-4ed5-9324-e9cdefed8413?alt=media&token=12ae9993-90f3-49f9-8ff1-bdd4c5376396"
     result = compare(
-        url1, "https://firebasestorage.googleapis.com/v0/b/ssrestaurant.appspot.com/o/images%2Fsamgyeopsal.jpg?alt=media&token=025dcd41-56b6-46fa-b8b6-c5a7d0ade2dd")
+        url1, "https://firebasestorage.googleapis.com/v0/b/japor-45077.appspot.com/o/report-images%2Fc786a60a-0572-4ed5-9324-e9cdefed8413?alt=media&token=12ae9993-90f3-49f9-8ff1-bdd4c5376396")
     if result == True:
         data = {
-            "response": "Sukses"
+            "response": "True"
         }
         return JsonResponse(data)
     else:
@@ -72,9 +70,9 @@ def getCompare(request):
 def getRecommendation(request):
     model = keras.models.load_model('./models/model.h5')
 
-    url1 = "https://firebasestorage.googleapis.com/v0/b/ssrestaurant.appspot.com/o/images%2Fudang.jpg?alt=media&token=025e429d-f316-4801-924e-0b150eb9d039"
-    urllib.request.urlretrieve(url1, "gfg.png")
-    img = image.load_img("gfg.png", target_size=(150, 150))
+    url1 = "https://firebasestorage.googleapis.com/v0/b/japor-45077.appspot.com/o/report-images%2Fc786a60a-0572-4ed5-9324-e9cdefed8413?alt=media&token=12ae9993-90f3-49f9-8ff1-bdd4c5376396"
+    localfile3, headers = urllib.request.urlretrieve(url1)
+    img = image.load_img(localfile3, target_size=(150, 150))
 
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
