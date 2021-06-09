@@ -1,4 +1,4 @@
-# Japor Application API
+# Japor API
 
 Here is the repository from Cloud Computing side. We use Django REST framework to make an API.
 
@@ -33,7 +33,13 @@ DATABASES = {
 
 ```
 
-Run the API
+Run Cloud SQL Proxy so the API can be run on local with database on cloud.
+```bash
+cloud_sql_proxy.exe -instances=japor-application:asia-southeast2:japor-database=tcp:3306
+#Change instances to your connection name
+```
+
+Run the API.
 
 ```bash
 python manage.py runserver
